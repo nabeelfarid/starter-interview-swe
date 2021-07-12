@@ -5,3 +5,5 @@ export interface User {
   avatar: string;
   note: string;
 }
+
+export type Note = { userId: string; text: string };

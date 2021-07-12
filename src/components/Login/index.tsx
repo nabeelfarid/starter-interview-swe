@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import { login, LoginStatus, logout, selectAuth } from "./authslice";
+import { resetNoteSlice } from "../Note/noteslice";
 import styles from "./Login.module.css";
 
 export function Login() {
@@ -12,7 +13,14 @@ export function Login() {
     return (
       <div className={styles.container}>
         <span>Welcome, {auth.user.name}.</span>
-        <button onClick={() => dispatch(logout())}>Logout</button>
+        <button
+          onClick={() => {
+            dispatch(logout());
+            dispatch(resetNoteSlice());
+          }}
+        >
+          Logout
+        </button>
       </div>
     );
   } else {
